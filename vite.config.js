@@ -2,21 +2,24 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+  base: './', // Ensures assets are loaded correctly in Firebase Hosting
   plugins: [react()],
+  server: {
+    port: 3000, // Set the port to 3000, or adjust according to your needs
+  },
   build: {
     rollupOptions: {
       output: {
-        // Manual chunking for better splitting of large files
         manualChunks(id) {
           if (id.includes('node_modules')) {
             if (id.includes('react')) {
-              return 'react-vendors'; // Separate React-related libraries
+              return 'react-vendors';
             }
-            return 'vendor'; // Other node_modules
+            return 'vendor';
           }
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Increase the warning limit (optional)
+    chunkSizeWarningLimit: 1000,
   },
 });
