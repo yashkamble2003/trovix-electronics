@@ -1,16 +1,22 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+  plugins: [react()],
   build: {
     rollupOptions: {
       output: {
+        // Manual chunking for better splitting of large files
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+            if (id.includes('react')) {
+              return 'react-vendors'; // Separate React-related libraries
+            }
+            return 'vendor'; // Other node_modules
           }
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Raise the limit if appropriate
+    chunkSizeWarningLimit: 1000, // Increase the warning limit (optional)
   },
 });
