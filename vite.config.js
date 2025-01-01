@@ -1,11 +1,8 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-
 export default defineConfig({
-  base: './', // Ensures assets are loaded correctly in Firebase Hosting
+  base: './', // Ensures assets are loaded correctly
   plugins: [react()],
   server: {
-    port: 3000, // Set the port to 3000, or adjust according to your needs
+    port: 10000,  // Add this line to specify the correct port
   },
   build: {
     rollupOptions: {
