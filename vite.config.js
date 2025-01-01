@@ -1,8 +1,10 @@
+import { defineConfig } from 'vite'; // Ensure this is included
+
 export default defineConfig({
-  base: './', // Ensures assets are loaded correctly
+  base: './',
   plugins: [react()],
   server: {
-    port: 10000,  // Add this line to specify the correct port
+    port: 10000,  // Correct port for deployment
   },
   build: {
     rollupOptions: {
