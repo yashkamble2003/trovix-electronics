@@ -15,9 +15,9 @@ function Home() {
       <HeroSection />
       <Filter />
       <ProductCard />
-      <div className="flex justify-center -mt-10 mb-4">
+      <div className="flex justify-center mb-4 -mt-10">
         <Link to={'/allproducts'}>
-          <button className=' bg-gray-300 px-5 py-2 rounded-xl'>See more</button>
+          <button className='px-5 py-2 bg-gray-300 rounded-xl'>See more</button>
         </Link>
       </div>
       <Track />
